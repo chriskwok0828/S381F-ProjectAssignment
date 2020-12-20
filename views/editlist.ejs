@@ -1,0 +1,67 @@
+<html>
+<%- include('myview.ejs') %>
+
+	<body>
+
+		<div class="container" style="margin-right: 0;margin-left: 0;">
+			<h2>Create New Restaurant</h2>
+			<p>Please fill in the table:</p>
+			<table class="table" style="width: 60%;">
+				<form action="/update" method="post" enctype="multipart/form-data">
+					<tbody>
+						<tr>
+							<td>Restaurant_id:</td>
+							<td><input type="text" name="id" value="<%=c[0]._id %>" readonly></td>
+						</tr>
+						<tr>
+							<td>Restaurant Name:</td>
+							<td><input type="text" name="name" value="<%=c[0].name %>"></td>
+						</tr>
+						<tr>
+							<td>Borough:</td>
+							<td><input type="text" name="borough" value="<%=c[0].borough %>"></td>
+						</tr>
+						<tr>
+							<td>Cuisine:</td>
+							<td><input type="text" name="cuisine" value="<%=c[0].cuisine %>"></td>
+						</tr>
+						<tr>
+							<td>Photo:</td>
+							<td><input type="file" name="photo"></td>
+						</tr>
+						<% if((c[0].photo!="") && (c[0].photo!=null)){ %>
+							<tr style="display:none;">
+								<td><input type="text" name="base64" value="<%= c[0].photo %>" hidden></td>
+								<td><input type="text" name="base64_type" value="<%= c[0].mimetype %>" hidden></td>
+							</tr>
+							<%}%>
+						<tr>
+							<td colspan=2><h5>Adress:<h5></td>
+						</tr>
+						<tr>
+							<td>street:</td>
+							<td><input type="text" name="street" value="<%=c[0].address.street %>"></td>
+						</tr>
+						<tr>
+							<td>Building:</td>
+							<td><input type="text" name="building" value="<%=c[0].address.building %>"></td>
+						</tr>
+						<tr>
+							<td>Zipcode:</td>
+							<td><input type="text" name="zipcode" value="<%=c[0].address.zipcode %>"></td>
+						</tr>
+						<tr>
+							<td>Coord:</td>
+							<td><input type="text" name="coord" value="<%=c[0].address.coord %>"></td>
+						</tr>
+						<tr>
+							<td><a href="/showdetails?id=<%=c[0]._id %>" ><button type="button" class="btn btn-primary" style="width: 100%;">Cancel</button></a></td>
+							<td><button type="submit" class="btn btn-primary btn-block">Update</button></td>
+						</tr>
+					</tbody>
+				</form>
+			</table>
+		</div>
+	</body>
+
+</html>

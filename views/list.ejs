@@ -1,0 +1,46 @@
+<HTML>
+<%- include('myview.ejs') %>
+
+	<BODY>
+		
+		<h3>Hi <%= username%></h3>
+		<div class="d-flex align-items-center" style="display: flex;justify-content: space-between;">
+		<div class="d-inline-block">
+			<H1>Showing <%= c.length %> Restaurants</H1>
+			<% if(criteria!="{}"){%>
+				<div class="text-nowrap"><p class="font-weight-light"><%= criteria %>&nbsp;<a href="/"><button type="button" class="btn btn-outline-dark btn-sm">Reset</button></a></p></div>
+				
+			<%} %>
+			
+		</div>
+
+		<div class="d-inline-block">
+			<form action="/search" method="POST" id="search">
+				<input type="radio" id="name" name="search_method" value="name" />
+				<label for="name">Name</label>
+				<input type="radio" id="borough" name="search_method" value="borough" />
+				<label for="borough">Borough</label>
+				<input type="radio" id="cuisine" name="search_method" value="cuisine" />
+				<label for="cuisine">Cuisine</label>
+				<div class="input-group">
+					<input type="text" name="search_content" placeholder="Name, Borough or cuisine."
+						style="padding-left: 0.5rem;width: 220px;" />
+					<div class="input-group-append">
+						<button class="btn btn-secondary" type="submit" form="search" value="Submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+</div>
+<a href='/addlist'><button class="btn btn-outline-info">Add New Restaurant</button></a>
+		<div class="list-group">
+			<% c.forEach(function(restaurant) { %>
+				<a class="list-group-item list-group-item-action" href="/showdetails?id=<%=restaurant._id %>"><%=restaurant.name %></a>
+				<% });%>
+
+					<br>
+	</BODY>
+
+</HTML>

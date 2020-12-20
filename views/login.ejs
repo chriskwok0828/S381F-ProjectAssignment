@@ -1,0 +1,36 @@
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<body>
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="container-login text-center"
+				style="margin: auto;width: 20%;padding: 10px;border: 5px solid #74b9e7;position: absolute;top:25%;bottom: 25%;left: 0;right: 0;align-items: center;justify-content: center;" />
+			<div class="row">
+				<div class="col-xl">
+					<div>
+						<h1 class="logo-name">Welcome</h1>
+					</div>
+					<p>Use the following IDs and Password:</p>
+					<p><small>student (no password)</small></p>
+					<p><small>demo (no password)</small></p>
+					<form class="m-t" role="form" action="/login" method="post">
+						<div class="form-group">
+							<input type="text" class="form-control" name="name" placeholder="username" required>
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" placeholder="Password" name="password">
+						</div>
+						<button type="submit" class="btn btn-primary btn-block">Login</button>
+					</form>
+					<a class="btn btn-default btn-block" href="/register">Create an account</a>
+				</div>
+			</div>
+		</div>
+</body>
+
+</html>

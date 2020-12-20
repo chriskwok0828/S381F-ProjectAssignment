@@ -1,0 +1,121 @@
+<HTML>
+
+<head>
+   <title>
+      <%= c[0].name %>
+   </title>
+   <style>
+      .btn-primary {
+         background-color: #88cdf5 !important;
+         border-color:#88cdf5;
+      }
+      .btn-primary:hover {
+         background-color: #4fb8f5 !important;
+         border-color:#4fb8f5;
+      }
+      
+   </style>
+</head>
+<%- include('myview.ejs') %>
+
+   <BODY>
+      <table>
+         <tr>
+            <th>
+               <H2>
+                  <%= c[0].name %>
+               </H2>
+            </th>
+         </tr>
+         <tr>
+            <a href="/"><button type="button" class="btn btn-secondary">Back</button></a>&nbsp;
+            <a href="/rate?restaurant_id=<%=c[0]._id %>" style="text-decoration: none"><button type="button" class="btn btn-primary">Rate</button></a>&nbsp;
+            <% if(req.session.username==c[0].owner){%>
+               <a href="/edit?id=<%=c[0]._id %>&owner=<%= c[0].owner %>"><button type="button" class="btn btn-primary">Edit Restaurant Details</button></a>&nbsp;
+               <a href="/delete?id=<%=c[0]._id %>"><button type="button" class="btn btn-danger">Delete</button></a>
+               <%}%>
+         </tr>
+         <tr>
+            <td>ID:</td>
+            <td>
+               <%= c[0]._id %>
+            </td>
+         </tr>
+         <% if (c[0].borough !="") { %>
+            <tr>
+               <td>Borough:</td>
+               <td>
+                  <%= c[0].borough %>
+               </td>
+            </tr>
+            <%}%>
+               <% if (c[0].cuisine !="") { %>
+                  <tr>
+                     <td>Cuisine:</td>
+                     <td>
+                        <%= c[0].cuisine %>
+                     </td>
+                  </tr>
+                  <%}%>
+                     <% if (c[0].address.street !="") { %>
+                        <tr>
+                           <td>Street:</td>
+                           <td>
+                              <%= c[0].address.street %>
+                           </td>
+                        </tr>
+                        <%} if (c[0].address.building !="") { %>
+                           <tr>
+                              <td>Building:</td>
+                              <td>
+                                 <%= c[0].address.building %>
+                              </td>
+                           </tr>
+                           <% }if (c[0].address.zipcode !="") { %>
+                              <tr>
+                                 <td>Zipcode:</td>
+                                 <td>
+                                    <%= c[0].address.zipcode %>
+                                 </td>
+                              </tr>
+                              <%} if (c[0].address.coord !="") { %>
+                                 <tr>
+                                    <td>Coord:</td>
+                                    <td><a
+                                          href="/leaflet?coord=<%= c[0].address.coord %>&_id=<%= c[0]._id%>">Map</a>
+                                    </td>
+                                 </tr>
+                                 <%}%>
+                                    <% if(c[0].grades.length !=0){ %>
+                                       <tr>
+                                          <td>Grades:</td>
+                                          <td>
+                                             <ul>
+                                                <% c[0].grades.forEach(function(grade){ %>
+                                                   <li>user: <%= grade.user %>, Score: <%= grade.score %>
+                                                   </li>
+                                                   <%});%>
+                                             </ul>
+                                          </td>
+                                       </tr>
+                                       <%}%>
+
+                                          <tr>
+                                             <td>Owner:</td>
+                                             <td>
+                                                <%= c[0].owner %>
+                                             </td>
+                                          </tr>
+      </table>
+      <% if ((c[0].photo != "" ) && (c[0].photo != null)) { %>
+
+         Photo: </br>
+
+         <img src="data:<%= c[0].mimetype %>;base64,<%= c[0].photo %>"></td>
+         <% }%>
+
+
+
+   </BODY>
+
+</HTML>

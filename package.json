@@ -1,0 +1,23 @@
+{
+    "name": "s381Asm",
+    "description": "Express.js App",
+    "author": "Chris and Anson",
+    "version": "0.0.1",
+    "dependencies": {
+        "node": "*",
+	"express": "*",
+	"cookie-session": "*",
+	"assert": "*",
+        "ejs": "*",
+	"fs": "*",
+        "express-formidable": "*",
+        "mongodb": "3.6.3"
+	
+	
+	
+    },
+    "engine": "*",
+    "scripts": {
+        "start": "node server"
+    }
+}

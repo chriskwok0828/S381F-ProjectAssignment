@@ -1,0 +1,69 @@
+<html>
+<%- include('myview.ejs') %>
+<style>
+	.btn-primary {
+		background-color: #88cdf5 !important;
+		border-color:#88cdf5 !important;
+	}
+	.btn-primary:hover {
+		background-color: #4fb8f5 !important;
+		border-color:#4fb8f5 !important;
+	}
+	
+</style>
+	<body>
+
+	
+
+		<div class="container" style="margin-right: 0;margin-left: 0;">
+			<h2>Create New Restaurant</h2>
+			<p>Please fill in the table:</p>
+			<table class="table" style="width: 60%;">
+				<form action="/addlist" method="post" enctype="multipart/form-data">
+					<tbody>
+						<tr>
+							<td>Restaurant Name:</td>
+							<td><input type="text" name="name" required></td>
+						</tr>
+						<tr>
+							<td>Borough:</td>
+							<td><input type="text" name="borough"></td>
+						</tr>
+						<tr>
+							<td>Cuisine:</td>
+							<td><input type="text" name="cuisine"></td>
+						</tr>
+						<tr>
+							<td>Photo:</td>
+							<td><input type="file" name="photo"></td>
+						</tr>
+						<tr>
+							<td colspan=2><h5>Adress:<h5></td>
+						</tr>
+						<tr>
+							<td>street:</td>
+							<td><input type="text" name="street"></td>
+						</tr>
+						<tr>
+							<td>Building:</td>
+							<td><input type="text" name="building"></td>
+						</tr>
+						<tr>
+							<td>Zipcode:</td>
+							<td><input type="text" name="zipcode"></td>
+						</tr>
+						<tr>
+							<td>Coord:</td>
+							<td><input type="text" name="coord"></td>
+						</tr>
+						<tr>
+							<td><a href="/"><button type="button" class="btn btn-primary" style="width: 100%;">Cancel</button></a></td>
+							<td><button type="submit" class="btn btn-primary btn-block">Create</button></td>
+						</tr>
+					</tbody>
+				</form>
+			</table>
+		</div>
+	</body>
+
+</html>

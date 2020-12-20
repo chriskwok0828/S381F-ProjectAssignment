@@ -1,0 +1,18 @@
+<HTML>
+<%- include('myview.ejs') %>
+
+    <BODY>
+        <p><a href="/showdetails?id=<%= restaurant_id%>"><button type="button" class="btn btn-primary">Back</button></a></p>
+        <form action="/rate" method="POST">
+            <% if(typeof score=='undefined' ){%>
+                Score : <input type="number" name="score" max="10" min="0" />
+                <%}else{%>
+                    Score : <input type="number" name="score" max="10" min="0" value=<%=score %> />
+                    <%}%>
+                        <input type="text" name="username" value="<%= username%>" hidden />
+                        <input type="text" name="restaurant_id" value="<%= restaurant_id%>" hidden />
+                        <input type="submit" value="Rate">
+        </form>
+    </BODY>
+
+</HTML>
